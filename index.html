@@ -498,8 +498,17 @@
 
       
         
-          <p> title: arguments对象</p>
-<h2 id="arguments对象"><a href="#arguments对象" class="headerlink" title="arguments对象"></a>arguments对象</h2>
+          <hr>
+<h2 id="title-arguments对象"><a href="#title-arguments对象" class="headerlink" title=" title: arguments对象"></a> title: arguments对象</h2><h2 id="arguments对象"><a href="#arguments对象" class="headerlink" title="arguments对象"></a>arguments对象</h2><p>在每一个函数调用的过程中, 函数代码体内有一个默认的对象<code>arguments</code>, 它存储着实际传入的所有参数。</p>
+<p><code>arguments</code>是一个伪数组对象. 它表示在函数调用的过程中传入的所有参数的集合。在函数调用过程中不规定参数的个数与类型, 可以使得函数调用变得非常灵活性。</p>
+<p>JavaScript中的函数并没有规定必须如何传参：</p>
+<ol>
+<li>定义函数的时候不写参数, 一样可以调用时传递参数</li>
+<li>定义的时候写了参数, 调用的时候可以不传参</li>
+<li>定义的时候写了一个参数, 调用的时候可以随意的传递多个而参数</li>
+</ol>
+<p>在代码设计中, 如果需要函数带有任意个参数的时候, 一般就不带任何参数, 所有的参数利用<code>arguments</code>对象来获取. 一般的函数定义语法, 可以写成:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"> <span class="regexp">/* ... */</span> </span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/01/arguments对象/#more" rel="contents">
