@@ -1,0 +1,821 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="递归什么是递归在程序中，所谓的递归，就是函数自己直接或间接的调用自己。调用自己分两种：
+
+直接调用自己
+
+间接调用自己
+
+
+就递归而言最重要的就是跳出结构，因为跳出了才可以有结果.
+化归思想化归思想：将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。
+递归思想就是将一个问题转换为一个已解决的问题来实现
+假如有一个函数f, 如果它是递归函数的话, 那么也就是说函数体内的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="递归">
+<meta property="og:url" content="http://yoursite.com/2016/12/03/递归/index.html">
+<meta property="og:site_name" content="博客乐园">
+<meta property="og:description" content="递归什么是递归在程序中，所谓的递归，就是函数自己直接或间接的调用自己。调用自己分两种：
+
+直接调用自己
+
+间接调用自己
+
+
+就递归而言最重要的就是跳出结构，因为跳出了才可以有结果.
+化归思想化归思想：将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。
+递归思想就是将一个问题转换为一个已解决的问题来实现
+假如有一个函数f, 如果它是递归函数的话, 那么也就是说函数体内的">
+<meta property="og:updated_time" content="2016-12-03T14:46:57.899Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="递归">
+<meta name="twitter:description" content="递归什么是递归在程序中，所谓的递归，就是函数自己直接或间接的调用自己。调用自己分两种：
+
+直接调用自己
+
+间接调用自己
+
+
+就递归而言最重要的就是跳出结构，因为跳出了才可以有结果.
+化归思想化归思想：将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。
+递归思想就是将一个问题转换为一个已解决的问题来实现
+假如有一个函数f, 如果它是递归函数的话, 那么也就是说函数体内的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/03/递归/"/>
+
+
+
+
+
+  <title> 递归 | 博客乐园 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">博客乐园</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/首页" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/归档" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/分类" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/标签" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/关于" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/搜索" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/公益404" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/03/递归/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Dongdeshan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="博客乐园">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="博客乐园" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                递归
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-03T22:35:26+08:00">
+                2016-12-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="什么是递归"><a href="#什么是递归" class="headerlink" title="什么是递归"></a>什么是递归</h3><p>在程序中，所谓的递归，就是函数自己直接或间接的调用自己。调用自己分两种：</p>
+<ol>
+<li><p>直接调用自己</p>
+</li>
+<li><p>间接调用自己</p>
+</li>
+</ol>
+<p>就递归而言最重要的就是跳出结构，因为跳出了才可以有结果.</p>
+<h3 id="化归思想"><a href="#化归思想" class="headerlink" title="化归思想"></a>化归思想</h3><p><strong>化归思想：</strong>将一个问题由难化易，由繁化简，由复杂化简单的过程称为化归，它是转化和归结的简称。</p>
+<p>递归思想就是将一个问题转换为一个已解决的问题来实现</p>
+<p>假如有一个函数<code>f</code>, 如果它是递归函数的话, 那么也就是说函数体内的问题还是转换为 <code>f</code>的形式.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    ... f( ... ) ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="案例分析思路"><a href="#案例分析思路" class="headerlink" title="案例分析思路:"></a>案例分析思路:</h4><a id="more"></a>
+<blockquote>
+<p>1, 2, 3, 4, 5, …, 100 求和</p>
+</blockquote>
+<ol>
+<li><p>首先假定递归函数已经写好, 假设是<code>foo</code>. 即<code>foo(100)</code>就是求<code>1</code>到<code>100</code>的和</p>
+</li>
+<li><p>寻找递推关系. 就是<code>n</code>与<code>n-1</code>, 或<code>n-2</code>之间的关系:<code>foo( n ) == n + foo( n - 1 )</code></p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> res = foo(<span class="number">100</span>);</div><div class="line"><span class="keyword">var</span> res = foo(<span class="number">99</span>) + <span class="number">100</span>;</div></pre></td></tr></table></figure>
+<p><strong>将递推结构转换为递归体</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> n + foo( n - <span class="number">1</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>将临界条件加到递归体中(求1的结果为1)</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"> n </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> ( n == <span class="number">1</span> ) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> n + foo( n - <span class="number">1</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="练习"><a href="#练习" class="headerlink" title="练习:"></a>练习:</h4><blockquote>
+<p>求 1, 3, 5, 7, 9, … 第<code>n</code>项的结果与前<code>n</code>项和. 序号从<code>0</code>开始</p>
+</blockquote>
+<h5 id="先看求第n项"><a href="#先看求第n项" class="headerlink" title="先看求第n项"></a>先看求第<code>n</code>项</h5><ol>
+<li><p>首先假定递归函数已经写好, 假设是<code>fn</code>. 那么第<code>n</code>项就是<code>fn(n)</code></p>
+</li>
+<li><p>找递推关系:<code>fn(n) == f(n-1) + 2</code></p>
+</li>
+<li><p>递归体</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fn(n<span class="number">-1</span>) + <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>找临界条件</p>
+<ul>
+<li><p>求 n -&gt; n-1</p>
+</li>
+<li><p>求 n-1 -&gt; n-2</p>
+</li>
+<li><p>…</p>
+</li>
+<li><p>求 1 -&gt; 0</p>
+</li>
+<li><p>求 第 0 项, 就是 1</p>
+</li>
+</ul>
+</li>
+<li><p>加入临界条件</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"> n </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> ( n == <span class="number">0</span> ) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> fn( n<span class="number">-1</span> ) + <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="求前n项和"><a href="#求前n项和" class="headerlink" title="求前n项和"></a>求前<code>n</code>项和</h5><ol>
+<li><p>假设已完成, sum( n ) 就是前 n 项和</p>
+</li>
+<li><p>找递推关系: 前 n 项和 等于 第 n 项 + 前 n-1 项的和</p>
+</li>
+<li><p>递归体</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"> n </span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fn( n ) + sum( n - <span class="number">1</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>找临界条件</p>
+<ul>
+<li><code>n == 1</code>结果为 1</li>
+</ul>
+</li>
+<li><p>加入临界条件</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"> n </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> fn(n) + sum(n - <span class="number">1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>#</p>
+<h5 id="求第n项"><a href="#求第n项" class="headerlink" title="求第n项"></a>求第<code>n</code>项</h5><ol>
+<li>临界条件是 n == 0 =&gt; 1</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"> n </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> ( n == <span class="number">0</span> ) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> fn( n<span class="number">-1</span> ) + n - <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="前n项和"><a href="#前n项和" class="headerlink" title="前n项和"></a>前<code>n</code>项和</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"> n </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> ( n == <span class="number">0</span> ) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> sum( n - <span class="number">1</span> ) + fn( n );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h4><blockquote>
+<p>Fibonacci 数列: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, … 求其第 n 项.</p>
+</blockquote>
+<p>递推关系:<code>fn(n) == fn(n-1) + fn(n - 2)</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fib</span>(<span class="params"> n </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> ( n == <span class="number">0</span> || n == <span class="number">1</span> ) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> fib( n - <span class="number">1</span> ) + fib( n - <span class="number">2</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="练习-2"><a href="#练习-2" class="headerlink" title="练习"></a>练习</h4><blockquote>
+<p>阶乘：一个数字的阶乘表示的是从 1 开始 累乘到这个数字. 例如 3! 表示 1 <em> 2 </em> 3. 5! 就是 1 <em> 2 </em> 3 <em> 4 </em> 5. 规定 0 没有阶乘, 阶乘从1开始。</p>
+</blockquote>
+<p>求n的阶乘</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"> n </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> ( n == <span class="number">1</span> ) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> foo( n - <span class="number">1</span> ) * n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="练习-3"><a href="#练习-3" class="headerlink" title="练习"></a>练习</h4><blockquote>
+<p>求幂</p>
+</blockquote>
+<ul>
+<li><p>求幂就是求 某一个数 几次方</p>
+</li>
+<li><p>2*2 2 的 平方, 2 的 2 次方</p>
+</li>
+<li><p>求 n 的 m 次方</p>
+</li>
+<li><p>最终要得到一个函数 power( n, m )</p>
+</li>
+<li><p>n 的 m 次方就是 m 个 n 相乘 即 n 乘以 (m-1) 个 n 相乘</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">power</span> (<span class="params"> n, m </span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> ( m == <span class="number">1</span> ) <span class="keyword">return</span> n;</div><div class="line">    <span class="keyword">return</span> power( n, m - <span class="number">1</span> ) * n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/03/词法作用域/" rel="next" title="词法作用域">
+                <i class="fa fa-chevron-left"></i> 词法作用域
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="Dongdeshan" />
+          <p class="site-author-name" itemprop="name">Dongdeshan</p>
+          <p class="site-description motion-element" itemprop="description">要输就输给追求，要嫁就嫁给幸福</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/归档">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dongdeshanDLSdong" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/dongdeshan" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#递归"><span class="nav-number">1.</span> <span class="nav-text">递归</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是递归"><span class="nav-number">1.1.</span> <span class="nav-text">什么是递归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#化归思想"><span class="nav-number">1.2.</span> <span class="nav-text">化归思想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#案例分析思路"><span class="nav-number">1.2.1.</span> <span class="nav-text">案例分析思路:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习"><span class="nav-number">1.2.2.</span> <span class="nav-text">练习:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#先看求第n项"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">先看求第n项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#求前n项和"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">求前n项和</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#求第n项"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">求第n项</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#前n项和"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">前n项和</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-2"><span class="nav-number">1.2.4.</span> <span class="nav-text">练习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#练习-3"><span class="nav-number">1.2.5.</span> <span class="nav-text">练习</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dongdeshan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
